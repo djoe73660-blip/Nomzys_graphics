@@ -1,16 +1,42 @@
-import { ethers } from "hardhat";
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import * as dotenv from "dotenv";
 
-async function main() {
-  const cap = ethers.parseUnits("2000000", 18);
-  const initialSupply = ethers.parseUnits("1000000", 18);
-  const [deployer] = await ethers.getSigners();
-  const Token = await ethers.getContractFactory("NomzysToken");
-  const token = await Token.deploy(cap, initialSupply);
-  await token.waitForDeployment();
-  console.log("NomzysToken deployed to:", await token.getAddress());
-}
+dotenv.config();
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+// Ensure these are set in your .env file
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
+const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY || "";
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "";
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "";
+
+const config: HardhatUserConfig = {
+  solidity: {
+    version: "0.8.20", // Matches your NomzysToken.sol
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+  networks: {
+    sepolia: {
+      url: `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+      accounts: [PRIVATE_KEY],
+    },
+    // Mumbai is deprecated; use Amoy for Polygon testing
+    amoy: {
+      url: `https://polygon-amoy.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+      accounts: [PRIVATE_KEY],
+    },
+  },
+  etherscan: {
+    apiKey: {
+      sepolia: ETHERSCAN_API_KEY,
+      polygonAmoy: POLYGONSCAN_API_KEY,
+    },
+  },
+};
+
+export default config;
