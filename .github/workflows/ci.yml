@@ -1,6 +1,6 @@
-name: install
+name: Nomzy-graphics-token
 on:
-  push:
+  push:install
     branches: [main]
 jobs:
   test:
