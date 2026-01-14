@@ -1,4 +1,4 @@
-name: install--legacy-peer-deps
+name: install
 on:
   push:
     branches: [main]
