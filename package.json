@@ -1,4 +1,4 @@
-{git"Add package-lock.json for CL" got puch origin main
+{
   "name": "nomzys-graphics-token",
   "version": "1.0.0",
   "devDependencies": {
