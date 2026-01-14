@@ -1,4 +1,4 @@
-{git add package-lock.json got commit-m "Add package-lock.json for CL" got puch origin main 
+{git add package-lock.json got commit-m "Add package-lock.json for CL" got puch origin main
   "name": "nomzys-graphics-token",
   "version": "1.0.0",
   "devDependencies": {
