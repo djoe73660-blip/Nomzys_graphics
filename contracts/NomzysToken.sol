@@ -11,7 +11,8 @@ contract NomzysToken is ERC20Capped, ERC20Burnable, Ownable {
         _mint(msg.sender, initialSupply);
     }
     function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
+        _mint(to, amount); //
+ERC20Capped will automatically check the cap here
     }
     function _mint(address to, uint256 amount) internal override(ERC20, ERC20Capped) {
         super._mint(to, amount);
