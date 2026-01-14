@@ -1,7 +1,8 @@
 name: Nomzy-graphics-token
 on:
-  push:install
-    branches: [main]
+  push:
+    branches: 
+   - main
 jobs:
   test:
     runs-on: ubuntu-latest
