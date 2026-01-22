@@ -1,4 +1,4 @@
-{ cd Nomzy-graphics-token npm install
+{
   "name": "nomzys-graphics-token",
   "version": "1.0.0",
   "devDependencies": {
