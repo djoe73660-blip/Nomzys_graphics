@@ -1,5 +1,5 @@
-{Nomzy-graphics-token ci
-  "name": "nomzys-graphics-token",
+{
+  "name": "Nomzys-graphics-token ci",
   "version": "1.0.0",
   "devDependencies": {
     "hardhat": "^2.17.0",
