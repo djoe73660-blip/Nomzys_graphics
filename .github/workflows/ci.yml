@@ -1,4 +1,4 @@
-name: Nomzy-graphics-token CI
+name: Nomzy-graphics-token ci
 on:
   push:
     branches: 
