@@ -2,7 +2,7 @@ name: Nomzy-graphics-token CI
 on:
   push:
     branches: 
- - Main  
+ - main  
 jobs:
   test:
     runs-on: ubuntu-latest
