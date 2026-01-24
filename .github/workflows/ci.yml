@@ -26,5 +26,5 @@ jobs:
       - run: npx hardhat compile
       - run: npx hardhat run --network sepolia scripts/deploy.ts
         env:
-          SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
+          SEPOLIA_RPC_URL: ${{ secrets.CONTRACT_ADDRESS }} 2000000000000000000000000 1000000000000000000000000 {{ secrets.SEPOLIA_RPC_URL }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
