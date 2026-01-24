@@ -18,4 +18,4 @@
     "deploy:mumbai": "npx hardhat run --network polygon_mumbai scripts/deploy.ts",
     "deploy:mainnet": "npx hardhat run --network mainnet scripts/deploy.ts"
   }
-}
+} 
