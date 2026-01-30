@@ -1,7 +1,7 @@
 name: Nomzy-graphics-token ci
 on:
-  push:
-    branches: 
+  push: install 
+    branches: on
   - main  
 jobs:
   test:
