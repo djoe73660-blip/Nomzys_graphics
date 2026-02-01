@@ -1,5 +1,4 @@
- name: Deploy and Verify Token
-
+name: Deploy and Verify Token
 on:
   push:
     branches: [ main ]
@@ -14,13 +13,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22' # Upgrading to avoid the Node 20 warning
 
       - name: Install Dependencies
         run: npm install
 
       - name: Compile Smart Contracts
-        # THE INDENTATION BELOW MUST BE EXACTLY 8 SPACES
         run: npx hardhat compile
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
