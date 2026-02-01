@@ -1,29 +1,23 @@
- require("@nomicfoundation/hardhat-toolbox");
+  require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
-/** @type {import('hardhat/config').HardhatUserConfig} */
+// Dummy key prevents HHE3 crash if secrets are missing during compilation
+const DUMMY_KEY = "0000000000000000000000000000000000000000000000000000000000000000";
+const PRIVATE_KEY = process.env.PRIVATE_KEY || DUMMY_KEY;
+
 module.exports = {
   solidity: "0.8.20",
   networks: {
     sepolia: {
       url: process.env.SEPOLIA_RPC_URL || "",
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-    },
-    polygon: {
-      url: process.env.POLYGON_RPC_URL || "", // Add your Polygon RPC (e.g. from Alchemy)
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      accounts: [PRIVATE_KEY],
     },
     mainnet: {
-      url: process.env.MAINNET_RPC_URL || "", // Add your Ethereum Mainnet RPC
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-    },
+      url: process.env.MAINNET_RPC_URL || "",
+      accounts: [PRIVATE_KEY],
+    }
   },
   etherscan: {
-    // This allows you to verify code on Etherscan and Polygonscan
-    apiKey: {
-      mainnet: process.env.ETHERSCAN_API_KEY || "",
-      sepolia: process.env.ETHERSCAN_API_KEY || "",
-      polygon: process.env.POLYGONSCAN_API_KEY || "",
-    },
-  },
+    apiKey: process.env.ETHERSCAN_API_KEY || ""
+  }
 };
