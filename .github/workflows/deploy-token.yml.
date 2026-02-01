@@ -1,10 +1,21 @@
- steps:
-  - uses: actions/checkout@v4
-  - name: Use Node.js
-    uses: actions/setup-node@v4
-    with:
-      node-version: '24' # Matches your 2026 environment
-  - name: Install dependencies
-    run: npm install --save-dev hardhat@latest @nomicfoundation/hardhat-toolbox@latest ethers@6.14.0 --legacy-peer-deps
-  - name: Compile
-    run: npx hardhat compile --config hardhat.config.cjs
+name: Secure Token Deployment
+on: [push] # Triggers the workflow every time you push code
+
+jobs:
+  deploy-job:
+    runs-on: ubuntu-latest # Uses a secure GitHub-hosted machine
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Safely pulls your code from GitHub
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24' # Matches your 2026 project environment
+
+      - name: Install Secure Dependencies
+        # This fixes the "Class undefined" bug by pinning stable versions
+        run: npm install --save-dev hardhat@latest @nomicfoundation/hardhat-toolbox@latest ethers@6.14.0 --legacy-peer-deps
+
+      - name: Compile Contract
+        run: npx hardhat compile --config hardhat.config.cjs
