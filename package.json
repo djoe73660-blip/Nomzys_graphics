@@ -1,21 +1,12 @@
+
 {
-  "name": "nomzys-graphics-token"
+  "name": "nomzys-graphics-token",
   "version": "1.0.0",
-  "devDependencies": {
-    "hardhat": "^2.17.0",
-    "typescript": "^5.3.3",
-    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-    "ethers": "^6.8.1",
-    "@openzeppelin/contracts": "^4.9.5",
-    "chai": "^4.3.0",
-    "dotenv": "^16.3.1",
-    
-  },
+  "description": "Secure Token Deployment",
+  "main": "index.js",
   "scripts": {
-    "test": "npx hardhat test",
     "compile": "npx hardhat compile",
-    "deploy:sepolia": "npx hardhat run --network sepolia scripts/deploy.ts",
-    "deploy:mumbai": "npx hardhat run --network polygon_mumbai scripts/deploy.ts",
-    "deploy:mainnet": "npx hardhat run --network mainnet scripts/deploy.ts"
-  }
-} 
+    "deploy": "npx hardhat run scripts/deploy.ts --network sepolia"
+  },
+  "license": "ISC"
+}
