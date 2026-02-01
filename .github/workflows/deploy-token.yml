@@ -15,4 +15,4 @@ jobs:
       - name: Install Secure Dependencies
         run: npm install --save-dev hardhat@latest @nomicfoundation/hardhat-toolbox@latest ethers@6.14.0 --legacy-peer-deps
       - name: Compile Securely
-        run: npx hardhat compile --config hardhat.config.cjs
+        run: npx hardhat compile
