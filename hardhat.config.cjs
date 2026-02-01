@@ -1,20 +1,19 @@
-  require("@nomicfoundation/hardhat-toolbox");
+require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
-// Dummy key prevents HHE3 crash if secrets are missing during compilation
-const DUMMY_KEY = "0000000000000000000000000000000000000000000000000000000000000000";
-const PRIVATE_KEY = process.env.PRIVATE_KEY || DUMMY_KEY;
+// Use a dummy key if the secret isn't loaded yet to prevent HHE3 crash
+const P_KEY = process.env.PRIVATE_KEY || "0000000000000000000000000000000000000000000000000000000000000000";
 
 module.exports = {
   solidity: "0.8.20",
   networks: {
     sepolia: {
       url: process.env.SEPOLIA_RPC_URL || "",
-      accounts: [PRIVATE_KEY],
+      accounts: [P_KEY],
     },
-    mainnet: {
-      url: process.env.MAINNET_RPC_URL || "",
-      accounts: [PRIVATE_KEY],
+    polygon: {
+      url: process.env.POLYGON_RPC_URL || "",
+      accounts: [P_KEY],
     }
   },
   etherscan: {
