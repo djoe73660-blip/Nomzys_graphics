@@ -1,0 +1,10 @@
+steps:
+  - uses: actions/checkout@v4
+  - name: Use Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '24' # Matches your 2026 environment
+  - name: Install dependencies
+    run: npm install --save-dev hardhat@latest @nomicfoundation/hardhat-toolbox@latest ethers@6.14.0 --legacy-peer-deps
+  - name: Compile
+    run: npx hardhat compile --config hardhat.config.cjs
