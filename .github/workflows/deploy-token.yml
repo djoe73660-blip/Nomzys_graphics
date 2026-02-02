@@ -17,9 +17,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Compile
+      - name: Compile and Deploy
         # We point directly to the config file to prevent HHE3 errors
-        run: npx hardhat compile --config hardhat.config.cjs
+        run: |
+          npx hardhat compile --config hardhat.config.cjs
+          npx hardhat run scripts/deploy.ts --network sepolia --config hardhat.config.cjs
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
