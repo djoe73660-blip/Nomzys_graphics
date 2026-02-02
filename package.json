@@ -1,8 +1,9 @@
 
 {
-  "name": "nomzys-graphics-token",
+  "name": "nomzys_graphics",
   "version": "1.0.0",
-  "description": "Secure Token Deployment",
+  "type": "module",
+  "dependencies": "Secure Token Deployment",
   "main": "index.js",
   "scripts": {
     "compile": "npx hardhat compile",
