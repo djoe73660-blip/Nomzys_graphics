@@ -1,14 +1,26 @@
-        - name: Setup Node.js
+name: Deploy Token
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # Upgrading to the recommended Node 22 for Hardhat 3
+          node-version: '22'
+          cache: 'npm'
 
-      - name: Compile Smart Contracts
-        # The '--config' flag stops Hardhat from 'guessing' where the file is
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Compile
+        # We point directly to the config file to prevent HHE3 errors
         run: npx hardhat compile --config hardhat.config.cjs
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
-          POLYGON_RPC_URL: ${{ secrets.POLYGON_RPC_URL }}
-          MAINNET_RPC_URL: ${{ secrets.MAINNET_RPC_URL }}
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
