@@ -1,13 +1,10 @@
-          - name: Setup Node.js
+        - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # Fixed the version warning
-
-      - name: Install Dependencies
-        run: npm install
+          node-version: '22' # Upgrading to the recommended Node 22 for Hardhat 3
 
       - name: Compile Smart Contracts
-        # Adding --config ensures Hardhat looks for the exact file name
+        # The '--config' flag stops Hardhat from 'guessing' where the file is
         run: npx hardhat compile --config hardhat.config.cjs
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
