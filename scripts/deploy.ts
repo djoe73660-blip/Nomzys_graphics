@@ -1,24 +1,22 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  console.log("🚀 Starting deployment of NomzysToken...");
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying contracts with the account:", deployer.address);
+
+  // Define your token parameters
+  // 1,000,000 Cap and 100,000 Initial Supply
+  const cap = ethers.parseEther("1000000"); 
+  const initialSupply = ethers.parseEther("1000000");
 
   const Token = await ethers.getContractFactory("NomzysToken");
-
-  // These numbers must be sent because of your 'constructor' in the .sol file
-  // We use 18 decimals for typical ERC20 tokens
-  const cap = ethers.parseUnits("1000000", 18); // 1 Million Max
-  const initialSupply = ethers.parseUnits("100000", 18); // 100k Created at start
-
-  console.log("Deploying with a Cap of 1,000,000 NMZY...");
-
-  // We pass (cap, initialSupply) directly into the deploy function
+  
+  // PASSING THE ARGUMENTS HERE:
   const token = await Token.deploy(cap, initialSupply);
 
   await token.waitForDeployment();
 
-  const address = await token.getAddress();
-  console.log(`✅ NomzysToken deployed to: ${address}`);
+  console.log(`NomzysToken deployed to: ${await token.getAddress()}`);
 }
 
 main().catch((error) => {
