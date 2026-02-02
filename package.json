@@ -8,5 +8,8 @@
     "dotenv": "^16.4.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "deploy": "hardhat run scripts/deploy.ts --network sepolia"
   }
 }
