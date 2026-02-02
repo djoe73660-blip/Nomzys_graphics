@@ -1,13 +1,11 @@
-
 {
   "name": "nomzys_graphics",
   "version": "1.0.0",
   "type": "module",
-  "dependencies": "Secure Token Deployment",
-  "main": "index.js",
-  "scripts": {
-    "compile": "npx hardhat compile",
-    "deploy": "npx hardhat run scripts/deploy.ts --network sepolia"
-  },
-  "license": "ISC"
+  "devDependencies": {
+    "hardhat": "^3.1.5",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5"
+  }
 }
+
