@@ -5,14 +5,16 @@ async function main() {
 
   const Token = await ethers.getContractFactory("NomzysToken");
 
-  // We must provide 'cap' and 'initialSupply' as required by your .sol file
-  // Using 18 decimals (10^18)
-  const cap = ethers.parseEther("1000000"); // 1 million max
-  const initialSupply = ethers.parseEther("100000"); // 100k starting
+  // These numbers must be sent because of your 'constructor' in the .sol file
+  // We use 18 decimals for typical ERC20 tokens
+  const cap = ethers.parseUnits("1000000", 18); // 1 Million Max
+  const initialSupply = ethers.parseUnits("100000", 18); // 100k Created at start
 
-  console.log("Deploying with Cap:", cap.toString());
+  console.log("Deploying with a Cap of 1,000,000 NMZY...");
 
+  // We pass (cap, initialSupply) directly into the deploy function
   const token = await Token.deploy(cap, initialSupply);
+
   await token.waitForDeployment();
 
   const address = await token.getAddress();
