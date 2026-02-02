@@ -12,13 +12,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
+          # Removed cache: npm because your lock file is missing
 
       - name: Install Dependencies
         run: npm install
 
       - name: Compile and Deploy
-        # We point directly to the config file to prevent HHE3 errors
         run: |
           npx hardhat compile --config hardhat.config.cjs
           npx hardhat run scripts/deploy.ts --network sepolia --config hardhat.config.cjs
