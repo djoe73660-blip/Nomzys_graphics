@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  console.log("Starting deployment of NomzysToken...");
+  console.log("Deploying NomzysToken...");
 
   const Token = await ethers.getContractFactory("NomzysToken");
   const token = await Token.deploy();
