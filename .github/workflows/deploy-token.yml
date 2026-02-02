@@ -1,25 +1,14 @@
-name: Deploy and Verify Token
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
+          - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # Upgrading to avoid the Node 20 warning
+          node-version: '22' # Fixed the version warning
 
       - name: Install Dependencies
         run: npm install
 
       - name: Compile Smart Contracts
-        run: npx hardhat compile
+        # Adding --config ensures Hardhat looks for the exact file name
+        run: npx hardhat compile --config hardhat.config.cjs
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
